@@ -2,7 +2,7 @@ import insu from "./_insu"
 import { tableConfig } from "@/components/_table"
 
 export default async function PUT(...data){
-  const time = Date.now() - 1708000000000
+  const time = Date.now() - 1708000000000 // lol
   wiki = wiki.substring(wiki.indexOf("wiki/") + 5)
 
   const { db } = await insu()

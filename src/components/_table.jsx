@@ -1,3 +1,5 @@
+import Input from "./InputField"
+
 export const tableConfig = {
   th: [
     'English',
@@ -12,7 +14,7 @@ export const tableConfig = {
   val: ['en','ko','zh','ja','wiki','categ','note']
 }
 
-export default function TH(){
+export const TH =_=>{
   let th = []
   tableConfig.th.forEach((v)=>{
     th.push(<i className="th">{v}</i>)
@@ -23,22 +25,27 @@ export default function TH(){
 /**
  * @param {Object} props
  * @param {string} props.id
- * @param {string} props.css - className
+ * @param {string} props.cssClass - className
  * @param {Object} props.ctnt - Obj of contents from db
+ * @param {Function} props.post - Post method callback (use server)
+ * @todo Fix warning `Each child in a list should have a unique "key" prop. Check the top-level render call using <i>.`
+ * @todo Add ` key={i}`
  */
-export default function TR({id,css,ctnt,}){
+export default function TR({id,cssClass,ctnt,post}){
   let inputs = []
   tableConfig.val.forEach((v,i)=>{
-    inputs.push(<input
+    inputs.push
+    (<Input
       type="text"
-      id={v}
+      name={v}
       value={ctnt[i]}
+      _post={post}
     />)
   })
 
   return (
   <i
-    className={{rowWrap,[css]:true}}
+    className={`rowWrap ${cssClass}`}
     id={id}
   >
     <form>
