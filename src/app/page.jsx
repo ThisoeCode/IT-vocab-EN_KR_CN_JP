@@ -3,9 +3,9 @@ import New from "@/components/put-area"
 import Mainlist from "@/components/load-area"
 
 export default function Main() {
-  return <main>
+  return <i id='table'>
     <TH/>
     <New/>
     <Mainlist/>
-  </main>
+  </i>
 }

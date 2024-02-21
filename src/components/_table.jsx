@@ -6,10 +6,10 @@ export const tableConfig = {
     '한국어',
     '中文',
     '日本語',
-    'Wikipedia',
-    'Category',
+    'Wiki',
+    // 'Category',
     'Note',
-    '&#128465;', // 🗑️
+    '🗑️' // '&#128465;'
   ],
   val: ['en','ko','zh','ja','wiki','categ','note']
 }
@@ -17,9 +17,9 @@ export const tableConfig = {
 export const TH =_=>{
   let th = []
   tableConfig.th.forEach((v)=>{
-    th.push(<i className="th">{v}</i>)
+    th.push(<i className="th block">{v}</i>)
   })
-  return <i id="th">{th}</i>
+  return <i id="th" className="tr">{th}</i>
 }
 
 /**
@@ -27,31 +27,31 @@ export const TH =_=>{
  * @param {string} props.id
  * @param {string} props.cssClass - className
  * @param {Object} props.ctnt - Obj of contents from db
- * @param {Function} props.post - Post method callback (use server)
+ * @param {Function|false} props.post - Post method callback (use server)
  * @todo Fix warning `Each child in a list should have a unique "key" prop. Check the top-level render call using <i>.`
  * @todo Add ` key={i}`
  */
 export default function TR({id,cssClass,ctnt,post}){
   let inputs = []
   tableConfig.val.forEach((v,i)=>{
+    console.log(v==='wiki')
     inputs.push
     (<Input
       type="text"
       name={v}
       value={ctnt[i]}
       _post={post}
+      isWiki={v==='wiki'}
     />)
   })
 
   return (
   <i
-    className={`rowWrap ${cssClass}`}
+    className={`tr ${cssClass}`}
     id={id}
   >
-    <form>
-      {inputs}
-      <button className="del-btn"/>
-    </form>
+    {inputs}
+    <button className="del-btn"/>
   </i>
   )
 }
