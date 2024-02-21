@@ -6,6 +6,147 @@ export default function Mainlist(){
       <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
     </i>
     <i className="tr">
+      <Input value="Lorem"/><Input/><Input/><Input/><Input value="Lorem ipsum" isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input value="More Lorem"/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
+      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
+    </i>
+    <i className="tr">
       <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
     </i>
     <i className="tr">

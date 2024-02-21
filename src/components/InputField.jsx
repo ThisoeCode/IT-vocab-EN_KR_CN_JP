@@ -4,14 +4,15 @@ import {useState,useEffect} from "react"
  * @typedef {Object} InputProps
  * @property {Function|false} _post
  *  - Posting function callback (use server)
+ * @property {import("react").InputHTMLAttributes<HTMLInputElement>.value} [value='']
  * @property {boolean} [isWiki=false]
  *  - Enable Wikipedia link (Ctrl + click)
  */
 /**
  * @param {InputProps & HTMLInputElement} props
  */
-export default function Input({_post, isWiki=false, ...params}){
-  const [valueState,setValue] = useState('')
+export default function Input({_post,value='',isWiki=false, ...params}){
+  const [valueState,setValue] = useState(value)
   const [ctrlState,setCtrl] = useState(false)
   useEffect(_=>{ // Ctrl detect
     const keydown =e=>{
@@ -44,6 +45,7 @@ export default function Input({_post, isWiki=false, ...params}){
 
   return <i className="block">
     <input
+      value={valueState}
       onChange={e=>{setValue(e.target.value)}}
       onKeyDown={e=>{ // Press Enter to post
         if(_post && e.key==='Enter' && window.confirm("Sure to save?")){
@@ -56,7 +58,7 @@ export default function Input({_post, isWiki=false, ...params}){
         }
       }}
       style={css}
-      title={isWiki?'Ctrl+click to visit Wikipedia page':null}
+      title={isWiki&&valueState?`Ctrl+click to visit Wikipedia page of ${valueState.trim()}`:null}
       {...params}
     />
   </i>
