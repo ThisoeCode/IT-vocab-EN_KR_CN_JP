@@ -1,23 +1,10 @@
 import Input from "./InputField"
-
-export const tableConfig = {
-  th: [
-    'English',
-    '한국어',
-    '中文',
-    '日本語',
-    'Wiki',
-    // 'Category',
-    'Note',
-    '🗑️' // '&#128465;'
-  ],
-  val: ['en','ko','zh','ja','wiki','categ','note']
-}
+import {tableConfig} from "@/_serv/_config"
 
 export const TH =_=>{
   let th = []
-  tableConfig.th.forEach((v)=>{
-    th.push(<i className="th block">{v}</i>)
+  tableConfig.th.forEach((v,i)=>{
+    th.push(<i key={i} className="th block">{v}</i>)
   })
   return <i id="th" className="tr">{th}</i>
 }
@@ -34,10 +21,8 @@ export const TH =_=>{
 export default function TR({id,cssClass,ctnt,post}){
   let inputs = []
   tableConfig.val.forEach((v,i)=>{
-    console.log(v==='wiki')
     inputs.push
-    (<Input
-      type="text"
+    (<Input key={i}
       name={v}
       value={ctnt[i]}
       _post={post}

@@ -98,7 +98,7 @@ input{width:100%;height:100%;}
 #th{ /* extends #tr */
   font-weight:bold;
   background-color:#111;
-  border-bottom:#777 solid medium;
+  border-bottom:#777 solid thin;
   position:sticky;top:calc(2px + 2pt + var(--header-height));
 }
 .th{
@@ -113,5 +113,5 @@ input{width:100%;height:100%;}
 #mainlist .tr:nth-child(odd) input:focus{background:#393939}
 #mainlist .tr:nth-child(even){background:#292929}
 #mainlist .tr:nth-child(even) input:focus{background: #3c3c3c}
-#new{background:#030}
+.new{background:#030}
 input:focus{background:#050}

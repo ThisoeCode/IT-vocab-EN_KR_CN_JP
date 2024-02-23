@@ -7,11 +7,12 @@ import {useState,useEffect} from "react"
  * @property {import("react").InputHTMLAttributes<HTMLInputElement>.value} [value='']
  * @property {boolean} [isWiki=false]
  *  - Enable Wikipedia link (Ctrl + click)
+ * @property {Function} [_change] - Add-on to `onChange` attr
  */
 /**
  * @param {InputProps & HTMLInputElement} props
  */
-export default function Input({_post,value='',isWiki=false, ...params}){
+export default function Input({_post,value='',isWiki=false, _change=_=>{undefined}, ...params}){
   const [valueState,setValue] = useState(value)
   const [ctrlState,setCtrl] = useState(false)
   useEffect(_=>{ // Ctrl detect
@@ -44,12 +45,21 @@ export default function Input({_post,value='',isWiki=false, ...params}){
   })()
 
   return <i className="block">
-    <input
+    <input type="text"
       value={valueState}
-      onChange={e=>{setValue(e.target.value)}}
+      onChange={e=>{
+        setValue(e.target.value)
+        _change(e)
+      }}
       onKeyDown={e=>{ // Press Enter to post
-        if(_post && e.key==='Enter' && window.confirm("Sure to save?")){
-          _post(valueState)
+        if(e.key==='Enter' && window.confirm("Sure to save?")){
+          _post ? _post(valueState) : (_=>{
+            e.preventDefault()
+            e.target.form.requestSubmit()
+            e.target.form.dispatchEvent(
+              new Event("submit", { cancelable: true })
+            )
+          })()
         }}}
       onClick={e=>{ // Ctrl+click to open Wiki
         if (isWiki && e.ctrlKey && e.button===0 && valueState) {

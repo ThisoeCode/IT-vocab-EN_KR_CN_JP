@@ -11,10 +11,10 @@ export default async function UP(id,newData){
   )
 
   if (res.modifiedCount === 1) {
-    console.log(`ID[${documentId}] updated success.`)
+    console.log(`[Thisoe msg] ID[${documentId}] updated success.`)
     return true
   } else {
-    console.log(`ID[${documentId}] not found or no change`)
+    console.log(`[Thisoe msg] ID[${documentId}] not found or no change.`)
     return false
   }
 }

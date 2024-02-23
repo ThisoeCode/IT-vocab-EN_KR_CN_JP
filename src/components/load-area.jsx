@@ -1,4 +1,5 @@
 import Input from "./InputField";
+import TR from "./_table";
 
 export default function Mainlist(){
   return <i id="mainlist">
@@ -14,9 +15,7 @@ export default function Mainlist(){
     <i className="tr">
       <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
     </i>
-    <i className="tr">
-      <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
-    </i>
+    <TR ctnt={{en:'Lorem',wiki:'Lorem'}} cssClass='new' />
     <i className="tr">
       <Input/><Input/><Input/><Input/><Input isWiki/><Input/><Input/>
     </i>

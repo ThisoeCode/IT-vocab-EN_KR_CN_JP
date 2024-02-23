@@ -1,19 +1,37 @@
 import insu from "./_insu"
-import { tableConfig } from "@/components/_table"
+import {convertConfig} from "./_config"
 
-export default async function PUT(...data){
-  const time = Date.now() - 1708000000000 // lol
+export function convertThisoe(inObj){
+  const finalObj = {}
 
-  const { db } = await insu()
-  const collection = db.collection(process.env.DB_COLL)
+  // General convert
+  for (const key in convertConfig) {
+    finalObj[key] =
+    inObj.hasOwnProperty(convertConfig[key]) ?
+      inObj[convertConfig[key]].trim() :
+      ''
+  }
 
-  const doc = {time}
-  tableConfig.val.forEach((prop, i) => {
-    doc[prop] = data[i]
-  })
-  console.log(doc)
-  // const res = await collection.insertOne(doc)
+  // Special properties
+  if ('createtime' in convertConfig){
+    finalObj['createtime'] = Date.now()
+  }
 
-  // console.log(`PUT success: ID[${res.insertedId}`)
-  // return res.insertedId
+  return finalObj
+}
+
+export default async function PUT(doc){
+  try {
+    const { db } = await insu()
+    const collection = db.collection(process.env.DB_COLL)
+
+    console.log(doc) /** @todo del console.log */
+    // const res = await collection.insertOne(doc)
+
+    // console.log(`[Thisoe msg] PUT success: ID[${res.insertedId}`)
+    // return res.insertedId
+  } catch (err) {
+    console.error('[Thisoe ERROR] PUT() ERROR: \n'+err)
+    return false
+  }
 }
