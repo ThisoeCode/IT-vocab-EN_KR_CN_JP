@@ -1,7 +1,8 @@
 import TR from "./_table";
 
-export default function TempRow({rowId}){
+export default function TempRow({rowId,ctnt}){
   return <TR
-    ctnt={{}} // TODO: FINNISH THIS
+    id={rowId}
+    ctnt={ctnt}
   />
 }

@@ -1,7 +1,7 @@
 import insu from "./_insu"
 import {convertConfig} from "./_config"
 
-export function convertThisoe(inObj){
+export function convertToDb(inObj){
   const finalObj = {}
 
   // General convert
@@ -25,11 +25,11 @@ export default async function PUT(doc){
     const { db } = await insu()
     const collection = db.collection(process.env.DB_COLL)
 
-    console.log(doc) /** @todo del console.log */
     // const res = await collection.insertOne(doc)
 
     // console.log(`[Thisoe msg] PUT success: ID[${res.insertedId}`)
     // return res.insertedId
+    return 233
   } catch (err) {
     console.error('[Thisoe ERROR] PUT() ERROR: \n'+err)
     return false

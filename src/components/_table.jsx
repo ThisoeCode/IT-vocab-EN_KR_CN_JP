@@ -21,10 +21,12 @@ export const TH =_=>{
 export default function TR({id,cssClass,ctnt,post}){
   let inputs = []
   tableConfig.val.forEach((v,i)=>{
+    console.log('v -- ',ctnt[v]) // TODO DELETE
+    console.log('i -- ',ctnt[i]) // TODO DELETE
     inputs.push
     (<Input key={i}
       name={v}
-      value={ctnt[i]}
+      value={ctnt[v]}
       _post={post}
       isWiki={v==='wiki'}
     />)

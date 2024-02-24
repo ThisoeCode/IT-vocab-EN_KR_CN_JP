@@ -12,26 +12,20 @@ export const tableConfig = {
   val: ['en','ko','zh','ja','wiki','categ','memo']
 }
 
-/** @description DB format */
+/** DB format */
 export const convertConfig = {
-  '_en': 'English',
-  '_ko': '한국어',
-  '_zh': '中文',
-  '_ja': '日本語',
-  'wiki': 'Wiki',
-  'cat': 'Category',
-  'memo': 'Memo',
-  'createtime': null,
-  'check': '',
+
+// DtBs : tableHeader (falsy to disable pass to frontend)
+  '_en' : 'English',
+  '_ko' : '한국어',
+  '_zh' : '中文',
+  '_ja' : '日本語',
+ 'wiki' : 'Wiki',
+  'cat' : 'Category',
+ 'memo' : 'Memo',
+  'createtime' : 'time',
+
+// NOT YET AVAILABLE
+'check' : null,
 
 }
-
-// export const experiment_inObj = {
-//   English: '   a   ',
-//   '한국어': 'b',
-//   '中文': 'c',
-//   '日本語': 'd',
-//   Wiki: ' e ',
-//   Memo: ' f',
-//   'temp': 'g'
-// }

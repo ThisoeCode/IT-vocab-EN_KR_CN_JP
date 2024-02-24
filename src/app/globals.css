@@ -109,9 +109,20 @@ input{width:100%;height:100%;}
 }
 
 /* coloring */
-#mainlist .tr:nth-child(odd){background:#232323}
-#mainlist .tr:nth-child(odd) input:focus{background:#393939}
-#mainlist .tr:nth-child(even){background:#292929}
-#mainlist .tr:nth-child(even) input:focus{background: #3c3c3c}
 .new{background:#030}
-input:focus{background:#050}
+.new input:focus{
+  background-color:#151;
+  color:#eee;
+}
+#temp-rows .tr:nth-child(odd){background:#071939}
+#temp-rows .tr:nth-child(even){background:#025}
+#temp-rows input:focus{
+  background-color:#33c;
+  color:#eef;
+}
+#mainlist .tr:nth-child(odd){background:#232323}
+#mainlist .tr:nth-child(even){background:#292929}
+#mainlist input:focus{
+  background-color:#555;
+  color:#eee;
+}

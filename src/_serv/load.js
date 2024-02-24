@@ -1,4 +1,16 @@
 import insu from "./_insu"
+import {convertConfig} from "./_config"
+
+export function convertToTr(inObj){
+  const finalObj = {}
+  for (const key in convertConfig) {
+    if(!convertConfig[key]){continue}
+    finalObj[convertConfig[key]] = 
+      inObj.hasOwnProperty(key) ?
+        inObj[key] : ''
+  }
+  return finalObj
+}
 
 export default async function LOAD(){
   const { db } = await insu() // Establish MongoDB connection
