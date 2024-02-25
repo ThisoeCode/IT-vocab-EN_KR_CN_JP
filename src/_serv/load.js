@@ -15,11 +15,12 @@ export function convertToTr(inObj){
 
 ///////
 export default async function LOAD(){
-  const { db } = await insu() // Establish MongoDB connection
+  const {db} = await insu()
 
   const collection = db.collection(process.env.DB_COLL)
-  const documents = await collection.find({}).toArray()
+  const documents = await collection.find({}).sort({ 'createtime': -1 }).toArray()
 
   console.log(`[Thisoe msg] Successfully loaded ${documents.length} rows.`)
+  console.log(documents)
   return documents
 }

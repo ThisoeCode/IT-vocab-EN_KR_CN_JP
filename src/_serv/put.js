@@ -24,16 +24,16 @@ export function convertToDb(inObj){
 ///////
 export default async function PUT(doc){
   // console.log(doc)
-  const testId = "test_" + Math.floor(Math.random()*999)
+  // const testId = "test_" + Math.floor(Math.random()*999)
   try {
     const { db } = await insu()
     const collection = db.collection(process.env.DB_COLL)
 
-    // const res = await collection.insertOne(doc)
+    const res = await collection.insertOne(doc)
 
-    // console.log(`[Thisoe msg] PUT success: ID[${res.insertedId}`)
-    // return res.insertedId
-    return testId
+    console.log(`[Thisoe msg] PUT success: ID[${res.insertedId}`)
+    return res.insertedId
+    // return testId
   } catch (err) {
     console.error('[Thisoe ERROR] PUT() ERROR: \n'+err)
     return false

@@ -17,7 +17,7 @@ export default function New(){
 
   // 2. SET STATES
   const [dataState, setData] = useState(emptyData())
-  const [tempRow,addTempRow] = useState([])
+  const [tempRow,setTempRows] = useState([])
 
   // 3. Customized TR
   const newTR =(content=tableConfig.th)=>{
@@ -89,7 +89,8 @@ export default function New(){
         const ret = put(tempData)
         (ret===null)
           ? alert('[500 Internal Server Error]\nFailed to add row.')
-          : addTempRow(prev=>[...prev,((_=>{
+          : setTempRows(prev=>[...prev,(
+            (_=>{
               return <TR key={'tmpR_'+tempRow.length}
                 id={ret}
                 ctnt={tempData}

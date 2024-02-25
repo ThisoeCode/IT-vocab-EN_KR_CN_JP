@@ -6,19 +6,20 @@
   --main-margin-bottom:9pt;
   
   /* columns */
-  --c-lang:16%;
-  --c-wiki:9%;
-  --c-del:30pt;
+  --how-many-langs: 6;
+  --c-lang: 16%;
+  --c-wiki: 9%;
+  --c-memo: 18%;
+   --c-del: 30pt;
 }
-.td:nth-child(1),
-.td:nth-child(2),
-.td:nth-child(3),
-.td:nth-child(4){width:var(--c-lang)}
-.td:nth-child(5){width:var(--c-wiki)}
-.td:nth-child(6){
-  width:calc(100% - 4 * var(--c-lang) - var(--c-wiki) - var(--c-del))
-}
-.td:nth-child(7){width:var(--c-del)}
+.td:not(:nth-last-child(-n+3)) /* langs */
+  {width:var(--c-lang)}
+.td:nth-last-child(3) /* Wiki */
+  {width:var(--c-wiki)}
+.td:nth-last-child(2) /* Memo */
+  {width:var(--c-memo)}
+.td:nth-last-child(1) /* Rubbish */
+  {width:var(--c-del)}
 
 
 /* RESET */
