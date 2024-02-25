@@ -1,19 +1,28 @@
 'use client'
-import {useState,useEffect} from "react"
+import {useState,useEffect,InputHTMLAttributes,HTMLInputTypeAttribute} from "react"
+import { TD } from "./_table"
+import { dlt } from "./_use-server"
+
 /**
- * @typedef {Object} InputProps
- * @property {Function|false} _post
- *  - Posting function callback (use server)
- * @property {import("react").InputHTMLAttributes<HTMLInputElement>.value} [value='']
- * @property {boolean} [isWiki=false]
- *  - Enable Wikipedia link (Ctrl + click)
- * @property {Function} [_change] - Add-on to `onChange` attr
+ * @typedef {Object} ThisoeInputProps
+ * @property {Function|false} _post  Save the input when hit Enter.
+ *  - Pass in POSTing function (annotated with `'use server'`) to callback
+ *  - Pass in `false` to submit the parent form
+ * @property {InputHTMLAttributes<HTMLInputElement>.value} [_value='']
+ * @property {HTMLInputTypeAttribute} [_type='text']
+ * @property {boolean} [isWiki=false]  Enable Wikipedia link (Ctrl + click)
+ * @property {Function} [_change=_=>{undefined}]  Add-ons to `onChange` attr
  */
 /**
- * @param {InputProps & HTMLInputElement} props
+ * @param {ThisoeInputProps & HTMLInputElement} props
  */
-export default function Input({_post,value='',isWiki=false, _change=_=>{undefined}, ...params}){
-  const [valueState,setValue] = useState(value)
+export default function Input({
+  _post,
+  _value='', _type='text',
+  isWiki=false, _change=_=>{undefined},
+  ...params
+}){
+  const [valueState,setValue] = useState(_value)
   const [ctrlState,setCtrl] = useState(false)
   useEffect(_=>{ // Ctrl detect
     const keydown =e=>{
@@ -44,8 +53,8 @@ export default function Input({_post,value='',isWiki=false, _change=_=>{undefine
     return ret
   })()
 
-  return <i className="block">
-    <input type="text"
+  return <TD>
+    <input type={_type}
       value={valueState}
       onChange={e=>{
         setValue(e.target.value)
@@ -53,14 +62,14 @@ export default function Input({_post,value='',isWiki=false, _change=_=>{undefine
       }}
       onKeyDown={e=>{ // Press Enter to post
         if(e.key==='Enter' && window.confirm("Sure to save?")){
-          _post ? _post(valueState) : (_=>{
-            e.preventDefault()
-            e.target.form.requestSubmit()
-            e.target.form.dispatchEvent(
-              new Event("submit", { cancelable: true })
-            )
-          })()
-        }}}
+          _post
+            ? _post(valueState)
+            : (_=>{
+              e.preventDefault()
+              e.target.form.requestSubmit()
+            })()
+        }
+      }}
       onClick={e=>{ // Ctrl+click to open Wiki
         if (isWiki && e.ctrlKey && e.button===0 && valueState) {
           const url = `https://wikipedia.org/wiki/${valueState.trim().replace(/ /g,'_')}`
@@ -71,5 +80,18 @@ export default function Input({_post,value='',isWiki=false, _change=_=>{undefine
       title={isWiki&&valueState?`Ctrl+click to visit Wikipedia page of ${valueState.trim()}`:null}
       {...params}
     />
-  </i>
+  </TD>
+}
+
+
+export function DeleteBtn({rowID}){
+  return <TD>
+  <input key='rubbish-bin'
+    type='button'
+    value='🗑️'
+    onClick={_=>{
+      confirm("Delete row?")
+        && dlt(rowID)
+    }}
+  /></TD>
 }

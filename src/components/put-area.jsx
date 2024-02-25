@@ -1,11 +1,12 @@
 'use client'
 import {useEffect,useState} from "react"
 import {tableConfig} from "@/_serv/_config"
-import {put} from "./_server"
+import {put,up} from "./_use-server"
 import Input from "./InputField"
+import TR, {TD} from "./_table"
 
 export default function New(){
-  // 1. SET STATES
+  // 1. EMPTY DATA OBJ
   const emptyData =_=>{
     let obj = {}
     tableConfig.th.forEach(v=>{
@@ -13,10 +14,39 @@ export default function New(){
     })
     return obj
   }
+
+  // 2. SET STATES
   const [dataState, setData] = useState(emptyData())
   const [tempRow,addTempRow] = useState([])
 
-  // 2. EFFECT: pop-up when not submitted & leaving
+  // 3. Customized TR
+  const newTR =(content=tableConfig.th)=>{
+    let inputs = []
+    content.forEach((v,i)=>{
+      v==='🗑️'
+      ? inputs.push(
+        <TD key='rubbish-bin'
+          style={{cursor:'not-allowed'}}
+        />)
+      : inputs.push(
+        <Input key={i}
+          name={v}
+          _value={dataState[v]}
+          _post={false}
+          isWiki={v==='wiki'}
+          _change={e=>{
+            setData(prev=>({...prev,
+              [v]: e.target.value
+            }))
+          }}
+        />)
+    })
+    return inputs
+  }
+  // newTR STATE
+  const [newRow,resetNewRow] = useState(newTR())
+
+  // 4. EFFECT: alert when not submitted & leaving
   const hasFilledField =_=>{
     for (const key in dataState) {
       if (dataState.hasOwnProperty(key) && dataState[key].trim() !== ''){
@@ -37,51 +67,39 @@ export default function New(){
     return _=>{ window.removeEventListener('beforeunload', preventUnsave) }
   },[dataState])
 
-  // 3. EFFECT: clear all inputs after submit
-  
+  // 5. EFFECT: clear all inputs after submit
+  useEffect(_=>{
+    document.querySelectorAll('.new input')
+      .forEach(field=>{
+        field.value = ''
+      })
+  },[newRow])
 
-  // Customized TR
-  let inputs = []
-  const newTR =_=>{
-    tableConfig.th.forEach((v,i)=>{
-      v=='🗑️'?(_=>{
-        inputs.push(<i key='rubbish-bin'
-          className="block"
-          style={{cursor:'not-allowed'}}
-        />)
-      })() : (_=>{
-        inputs.push
-        (<Input key={i}
-          name={v}
-          value={dataState[v]}
-          _post={false}
-          isWiki={v==='wiki'}
-          /** input:onChange */
-          _change={e=>{
-            setData(prev=>({...prev,
-              [v]: e.target.value
-            }))
-          }}
-        />)
-      })()
-    })
-  }
-  newTR()
-
+  ///////
   return <><form className="new tr"
-    action={async _=>{
+    action={_=>{
       if(hasFilledField()){
         let tempData = dataState
+
+        // clear the new-row
         setData(emptyData())
-        const ret = await put(tempData)
-        if(ret===false){
-          alert('[500 Internal Server Error]\nFailed to add row.')
-        }else{
-          addTempRow(prev=>[...prev,ret])
-        }
+        resetNewRow(newTR())
+
+        // POST
+        const ret = put(tempData)
+        (ret===null)
+          ? alert('[500 Internal Server Error]\nFailed to add row.')
+          : addTempRow(prev=>[...prev,((_=>{
+              return <TR key={'tmpR_'+tempRow.length}
+                id={ret}
+                ctnt={tempData}
+                post={up}
+              />
+            })()
+          )])
       }
     }}
-  > {inputs} </form>
+  /*form*/>{newRow}</form>
   <i id="temp-rows">{tempRow}</i>
   </>
 }
