@@ -21,30 +21,29 @@ export function TD({children,...props}){
  * @param {Function|false} props.post Post method callback (use server)
  * @param {Function} props.deletion Delete-row function
  * @param {string} [props.cssClass] className
- * @todo Fix warning `Each child in a list should have a unique "key" prop. Check the top-level render call using <i>.`
- * @todo Add ` key={i}`
+ * @todo `deletion` is not used yet!
  */
 export default function TR({id,ctnt,post,deletion,cssClass=''}){
   let inputs = []
   tableConfig.th.forEach((v,i)=>{
-    v==='🗑️'
-    ? inputs.push(<DeleteBtn  key='DeleteBtn' rowID={1}/>)
-    : inputs.push(
-      <Input key={i}
-        name={v}
-        _value={ctnt[v]}
-        _post={post}
-        isWiki={v==='wiki'}
-      />)
+    if(v==='🗑️')
+      inputs.push(
+        <DeleteBtn  key='DeleteBtn' rowID={1}/>
+      )
+    else 
+      inputs.push(
+        <Input key={'hy1_'+i}
+          name={v}
+          _value={ctnt[v]}
+          _post={post}
+          isWiki={v==='Wiki'}
+        />)
   })
 
   return (
-  <i
-    className={`tr ${cssClass}`}
-    id={id}
-  >
+  <i id={id} className={`tr ${cssClass}`}>
     {inputs}
-    <button className="del-btn"/>
+    <button className="del-btn" onClick={deletion}/>
   </i>
   )
 }

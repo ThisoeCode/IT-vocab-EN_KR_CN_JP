@@ -13,7 +13,7 @@ export function convertToTr(inObj){
 }
 
 
-///////
+/** @returns {Promise<Array<Object>>} */
 export default async function LOAD(){
   const {db} = await insu()
 
@@ -21,6 +21,5 @@ export default async function LOAD(){
   const documents = await collection.find({}).sort({ 'createtime': -1 }).toArray()
 
   console.log(`[Thisoe msg] Successfully loaded ${documents.length} rows.`)
-  console.log(documents)
   return documents
 }

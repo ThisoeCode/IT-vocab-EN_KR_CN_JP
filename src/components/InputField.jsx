@@ -62,12 +62,11 @@ export default function Input({
       }}
       onKeyDown={e=>{ // Press Enter to post
         if(e.key==='Enter' && window.confirm("Sure to save?")){
-          _post
-            ? _post(valueState)
-            : (_=>{
-              e.preventDefault()
-              e.target.form.requestSubmit()
-            })()
+          if(_post) _post(valueState)
+          else(_=>{
+            e.preventDefault()
+            e.target.form.requestSubmit()
+          })()
         }
       }}
       onClick={e=>{ // Ctrl+click to open Wiki
