@@ -37,7 +37,7 @@ export default function Input({
       document.removeEventListener('keydown',keydown)
       document.removeEventListener('keyup',keyup)
     }
-  },[])
+  },[isWiki])
 
   const css =(_=>{
     let ret = {}

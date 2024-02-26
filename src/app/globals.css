@@ -84,6 +84,7 @@ main{
   flex:1 0;
 }
 .td{
+  flex:1 0;
   width:auto;
   outline:#777 solid 1px;
   text-align:center;

@@ -65,7 +65,7 @@ export default function New(){
     }
     window.addEventListener('beforeunload', preventUnsave)
     return _=>{ window.removeEventListener('beforeunload', preventUnsave) }
-  },[dataState])
+  },[dataState,hasFilledField])
 
   // 5. EFFECT: clear all inputs after submit
   useEffect(_=>{
@@ -87,9 +87,10 @@ export default function New(){
 
         // POST
         const ret = put(tempData)
-        (ret===null)
-          ? alert('[500 Internal Server Error]\nFailed to add row.')
-          : setTempRows(prev=>[...prev,(
+        if (ret===null)
+          alert('[500 Internal Server Error]\nFailed to add row.')
+        else
+          setTempRows(prev=>[...prev,(
             (_=>{
               return <TR key={'tmpR_'+tempRow.length}
                 id={ret}
