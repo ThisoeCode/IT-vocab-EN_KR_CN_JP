@@ -19,16 +19,14 @@ export function TD({children,...props}){
  * @param {string} props.id Row ID
  * @param {Object} props.ctnt Obj of contents from db
  * @param {Function|false} props.post Post method callback (use server)
- * @param {Function} props.deletion Delete-row function
  * @param {string} [props.cssClass] className
- * @todo `deletion` is not used yet!
  */
-export default function TR({id,ctnt,post,deletion,cssClass=''}){
+export default function TR({id,ctnt,post,cssClass=''}){
   let inputs = []
   tableConfig.th.forEach((v,i)=>{
     if(v==='🗑️')
       inputs.push(
-        <DeleteBtn  key='DeleteBtn' rowID={1}/>
+        <DeleteBtn  key='DeleteBtn' rowID={id}/>
       )
     else 
       inputs.push(
@@ -43,7 +41,6 @@ export default function TR({id,ctnt,post,deletion,cssClass=''}){
   return (
   <i id={id} className={`tr ${cssClass}`}>
     {inputs}
-    <button className="del-btn" onClick={deletion}/>
   </i>
   )
 }

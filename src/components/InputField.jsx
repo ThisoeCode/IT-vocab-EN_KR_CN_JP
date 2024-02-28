@@ -88,9 +88,12 @@ export function DeleteBtn({rowID}){
   <input key='rubbish-bin'
     type='button'
     value='🗑️'
-    onClick={_=>{
-      confirm("Delete row?")
-        && dlt(rowID)
+    onClick={async _=>{
+      if(confirm("Are you sure to delete this row?\nIt will be gone forever!")){
+        if(await dlt(rowID)){
+          /** @todo remove deleted row from DOM */
+        }
+      }
     }}
   /></TD>
 }

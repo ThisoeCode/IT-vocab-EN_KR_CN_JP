@@ -1,6 +1,7 @@
-import LOAD,{convertToTr} from "@/_serv/load"
+import LOAD from "@/_serv/load"
 import TR from "./_table"
-import {dlt, up} from "./_use-server"
+import {up} from "./_use-server"
+import{convertToTr}from"@/_serv/lib"
 
 export default async function Mainlist(){
   const r = async _=>{
@@ -13,7 +14,6 @@ export default async function Mainlist(){
         id={rid}
         ctnt={convertToTr(v)}
         post={up}
-        deletion={dlt}
       />)
     })
     return rows
