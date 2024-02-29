@@ -1,11 +1,12 @@
 import{convertConfig}from"./_config"
+import{v4}from"uuid"
 
-
-export const API = process.env.SELF_ROOT_URL+'/serv'
+/** API URL for `fetch()` */
+export const API = process.env.SELF_DOMAIN_URL+'/serv'
 
 
 export function convertToDb(inObj){
-  const finalObj = {}
+  const finalObj = {id:v4()}
   // General convert
   for (const key in convertConfig) {
     finalObj[key] =

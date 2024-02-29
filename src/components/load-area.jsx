@@ -1,21 +1,29 @@
-import LOAD from "@/_serv/load"
 import TR from "./_table"
 import {up} from "./_use-server"
-import{convertToTr}from"@/_serv/lib"
+import{API, convertToTr}from"@/_serv/lib"
 
 export default async function Mainlist(){
   const r = async _=>{
-    const data = await LOAD()
-    const rows = []
-    data.forEach((v,i)=>{
-      const rid = v._id.toString()
-      rows.push(
-      <TR key={i}
-        id={rid}
-        ctnt={convertToTr(v)}
-        post={up}
-      />)
-    })
+    const rows = [];
+    const data = await(
+      await fetch(API,{
+        method: 'GET',
+        cache: 'no-store',
+      })).json()
+    if(data.thisoe===200){
+      data.docs.forEach((v,i)=>{
+        const rid = v._id.toString()
+        rows.push(
+        <TR key={i}
+          id={rid}
+          ctnt={convertToTr(v)}
+          post={up}
+        />)
+      })
+    }else{
+      /** @todo nohurry-- Go to `src\app\serv\route.js` to return error message. */
+      undefined
+    }
     return rows
   }
 
