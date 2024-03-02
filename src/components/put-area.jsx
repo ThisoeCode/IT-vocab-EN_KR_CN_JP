@@ -77,7 +77,7 @@ export default function New(){
 
   ///////
   return <><form className="new tr"
-    action={_=>{
+    action={async _=>{
       if(hasFilledField()){
         let tempData = dataState
 
@@ -86,7 +86,8 @@ export default function New(){
         resetNewRow(newTR())
 
         // POST
-        const ret = put(tempData)
+        const ret = await put(tempData)
+        console.log(ret)
         if (ret===null)
           alert('[500 Internal Server Error]\nFailed to add row.')
         else

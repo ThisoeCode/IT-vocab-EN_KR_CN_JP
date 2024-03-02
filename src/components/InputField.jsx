@@ -88,6 +88,7 @@ export function DeleteBtn({rowID}){
   <input key='rubbish-bin'
     type='button'
     value='🗑️'
+    title="Delete row"
     onClick={async _=>{
       if(confirm("Are you sure to delete this row?\nIt will be gone forever!")){
         if(await dlt(rowID)){

@@ -6,7 +6,7 @@ export const API = process.env.SELF_DOMAIN_URL+'/serv'
 
 
 export function convertToDb(inObj){
-  const finalObj = {id:v4()}
+  const finalObj = {}
   // General convert
   for (const key in convertConfig) {
     finalObj[key] =
@@ -15,9 +15,8 @@ export function convertToDb(inObj){
       ''
   }
   // Special properties
-  if ('createtime' in convertConfig){
-    finalObj['createtime'] = Date.now()
-  }
+  finalObj['createdtime'] = Date.now()
+  finalObj['id'] = v4()
 return finalObj
 }
 
@@ -25,9 +24,23 @@ return finalObj
 export function convertToTr(inObj){
   const finalObj = {}
   for (const key in convertConfig) {
+    // Ignore `null`
     if(!convertConfig[key]){continue}
+    // General convert
     finalObj[convertConfig[key]] = 
       inObj.hasOwnProperty(key) ? inObj[key] : ''
+  }
+return finalObj
+}
+
+
+export function convertPatch(inObj){
+  const fullObj = convertToDb(inObj)
+  const finalObj = {}
+  for(const key in fullObj){
+    if(fullObj[key] && key !== "createdtime"){
+      finalObj[key] = fullObj[key]
+    }
   }
 return finalObj
 }

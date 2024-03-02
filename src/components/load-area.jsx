@@ -12,7 +12,7 @@ export default async function Mainlist(){
       })).json()
     if(data.thisoe===200){
       data.docs.forEach((v,i)=>{
-        const rid = v._id.toString()
+        const rid = v.id
         rows.push(
         <TR key={i}
           id={rid}
