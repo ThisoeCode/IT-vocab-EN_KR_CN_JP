@@ -1,4 +1,4 @@
-import Input, { DeleteBtn } from "./InputField"
+import Input,{DeleteBtn} from "./InputField"
 import {tableConfig} from "@/_serv/_config"
 
 export const TH =_=>{
@@ -21,12 +21,13 @@ export function TD({children,...props}){
  * @param {Function|false} props.post Post method callback (use server)
  * @param {string} [props.cssClass] className
  */
-export default function TR({id,ctnt,post,cssClass=''}){
+export default function TR_inner({id,ctnt,post,tmpDelete,tmpUndelete,cssClass=''}){
   let inputs = []
   tableConfig.th.forEach((v,i)=>{
     if(v==='🗑️')
       inputs.push(
-        <DeleteBtn  key='DeleteBtn' rowID={id}/>
+        <DeleteBtn key={`dltBtn-${id}`}
+        rowID={id} tmpDelete={tmpDelete} tmpUndelete={tmpUndelete}/>
       )
     else 
       inputs.push(
@@ -39,7 +40,7 @@ export default function TR({id,ctnt,post,cssClass=''}){
   })
 
   return (
-  <i id={id} className={`tr ${cssClass}`}>
+  <i id={id} className={cssClass}>
     {inputs}
   </i>
   )

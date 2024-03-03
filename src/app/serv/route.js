@@ -35,14 +35,16 @@ export const servTitle = {t1,t2,t3,t45}
  * @param {NextRequest} req
  */
 export async function GET(req){t1(req)
-  /** @type {Array} */
-  const docs = await(await collection)
-    .find({},{projection:{'_id':0}})
-    .sort({ 'createdtime': -1 })
-    .toArray()
+  try{
+    /** @type {Array} */
+    const docs = await(await collection)
+      .find({},{projection:{'_id':0}})
+      .sort({ 'createdtime': -1 })
+      .toArray()
 
-  console.log(`[${t2}LOAD 200] Loaded ${docs.length} rows.`)
-  return NJ({thisoe:200,docs})
+    console.log(`[${t2}LOAD 200] Loaded ${docs.length} rows.`)
+    return NJ({thisoe:200,docs})
+  }catch(_){console.dir(_)}
 }
 
 
@@ -52,14 +54,16 @@ export async function GET(req){t1(req)
  * @param {NextRequest} req
  */
 export async function PUT(req){t1(req)
-  req = await req.json()
-  try {
-    const res = await(await collection)
-      .insertOne(req)
-    console.log(`[${t2}PUT 201] res[${res}`)
-    return NJ({rid:req.id},{status:201})
-  }catch(e){
-    console.log(`[${t45}PUT 500] ID[${res.insertedId}`)
-    return NJ({rid:null},{status:500})
-  }
+  try{
+    req = await req.json()
+    try {
+      const res = await(await collection)
+        .insertOne(req)
+      console.log(`[${t2}PUT 201] Added new row: ObjectId[${res.insertedId}]`)
+      return NJ({rid:req.id},{status:201})
+    }catch(e){
+      console.log(`[${t45}PUT 500] Fail to add row: ObjectId[${res.insertedId}]`)
+      return NJ({rid:null},{status:500})
+    }
+  }catch(_){console.dir(_)}
 }

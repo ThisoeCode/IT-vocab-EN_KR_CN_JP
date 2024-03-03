@@ -1,4 +1,4 @@
-import TR from "./_table"
+import TR from "./_tr-wrap"
 import {up} from "./_use-server"
 import{API, convertToTr}from"@/_serv/lib"
 

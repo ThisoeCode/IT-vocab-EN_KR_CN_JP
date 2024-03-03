@@ -83,7 +83,12 @@ export default function Input({
 }
 
 
-export function DeleteBtn({rowID}){
+/**
+ * @param {string} rowID
+ * @param {Function} tmpDelete Delete (hide class hook callback)
+ * @param {Function} tmpUndelete Undelete when (show hook callback)
+ */
+export function DeleteBtn({rowID,tmpDelete,tmpUndelete}){
   return <TD>
   <input key='rubbish-bin'
     type='button'
@@ -91,8 +96,20 @@ export function DeleteBtn({rowID}){
     title="Delete row"
     onClick={async _=>{
       if(confirm("Are you sure to delete this row?\nIt will be gone forever!")){
-        if(await dlt(rowID)){
-          /** @todo remove deleted row from DOM */
+        tmpDelete()
+        const ret = await dlt(rowID)
+        if(!ret){
+          tmpUndelete()
+          switch(ret){
+            case NaN:
+              alert('[304 ERROR] The row to delete does not exist.')
+              break
+            case null:
+              alert('[500 Internal Server Error]\nFailed to delete row.')
+              break
+            default:
+              console.error("[Thisoe - Func ERROR] ret: ",ret)
+          }
         }
       }
     }}

@@ -79,10 +79,15 @@ main{
   display:flex; flex-direction:column;
   outline:#999 solid 3pt;
 }
+
 .tr{
   display:flex; flex-direction:row;
   flex:1 0;
 }
+.tmp-delete{display:none}
+.tmp-undlt{display:flex}
+.tmp-undlt input{background-color:darkred}
+
 .td{
   width:auto;
   outline:#777 solid 1px;
@@ -92,6 +97,7 @@ main{
   text-wrap:nowrap; white-space:nowrap;
   overflow:hidden;
 }
+
 input{width:100%;height:100%;}
 input[type=button]{cursor:pointer}
 input[type=button]:hover{background-color:#521}

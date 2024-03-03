@@ -3,7 +3,8 @@ import {useEffect,useState} from "react"
 import {tableConfig} from "@/_serv/_config"
 import {put,up} from "./_use-server"
 import Input from "./InputField"
-import TR, {TD} from "./_table"
+import TR from "./_tr-wrap"
+import{TD}from "./_table"
 
 export default function New(){
   // 1. EMPTY DATA OBJ
@@ -87,7 +88,6 @@ export default function New(){
 
         // POST
         const ret = await put(tempData)
-        console.log(ret)
         if (ret===null)
           alert('[500 Internal Server Error]\nFailed to add row.')
         else
