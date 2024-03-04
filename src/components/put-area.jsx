@@ -31,7 +31,7 @@ export default function New(){
         />)
       : inputs.push(
         <Input key={i}
-          name={v}
+          _col={v}
           _value={dataState[v]}
           _post={false}
           isWiki={v==='wiki'}

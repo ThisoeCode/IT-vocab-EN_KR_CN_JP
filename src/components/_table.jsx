@@ -1,5 +1,6 @@
 import Input,{DeleteBtn} from "./InputField"
 import {tableConfig} from "@/_serv/_config"
+import {ridToHid} from "@/_serv/lib"
 
 export const TH =_=>{
   let th = []
@@ -32,15 +33,16 @@ export default function TR_inner({id,ctnt,post,tmpDelete,tmpUndelete,cssClass=''
     else 
       inputs.push(
         <Input key={'hy1_'+i}
-          name={v}
+          _col={v}
           _value={ctnt[v]}
           _post={post}
+          _rid={id}
           isWiki={v==='Wiki'}
         />)
   })
 
   return (
-  <i id={id} className={cssClass}>
+  <i id={ridToHid(id)} className={cssClass}>
     {inputs}
   </i>
   )
