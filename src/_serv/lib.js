@@ -54,7 +54,7 @@ throw new Error('[Thisoe FuncError] Function `convertPatch`: the key of inputted
 
 export const ridToHid = rid=>{return 'r'+rid}
 export const hidToRid = hid=>{
-  if(hid.charAt(0)==='r') arguments[0].slice(1)
+  if(hid.charAt(0)==='r'){return hid.slice(1)}
   else throw new Error('[Thisoe FuncError] Function `idToRid` needs a valid Thisoe Rid.')
 }
 
@@ -76,7 +76,7 @@ const t1 = req=>{
   }
   let geo = req.headers.get('x-real-ip')
   geo=geo?geo.trim():'--'
-  console.log(`\n[Thisoe API_LAUNCH 100] From(IP): ${ip} [${geo}]`)
+  console.log(`\n[Thisoe API_LAUNCH 100] FromIP: ${ip} [${geo}]`)
   return void 1
 }
 const t2 = 'Thisoe msg::'

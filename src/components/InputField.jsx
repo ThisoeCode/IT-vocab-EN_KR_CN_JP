@@ -57,13 +57,15 @@ export default function Input({
 
   /**
    * For background-color with class 'unchanged', 'unsaved', 'failed', 'saved'
-   * @todo Check CSS of `.new` and `#temp-rows` input background-color infected by `.update-xxx`! */
+   */
   const updateState = useState('unchanged')
   const [commitValue,setCommitValue] = useState(_value)
   useEffect(_=>{ // `updateState` commander
-    valueState===commitValue
-    ? updateState[1]('unchanged')
-    : updateState[1]('unsaved')
+    if(_post){
+      valueState===commitValue
+      ? updateState[1]('unchanged')
+      : updateState[1]('unsaved')
+    }
   },[valueState])
 
   return <TD>
@@ -100,7 +102,7 @@ export default function Input({
       }}
       style={css}
       className={'update-' + updateState[0]}
-      title={isWiki&&valueState?`Ctrl+click to visit Wikipedia page of ${valueState.trim()}`:null}
+      title={isWiki&&valueState?`Ctrl+click to visit Wikipedia page of ${valueState.trim()}`:valueState}
       {...params}
     />
   </TD>
