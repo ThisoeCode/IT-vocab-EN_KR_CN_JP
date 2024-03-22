@@ -96,13 +96,13 @@ export default function Input({
       }}
       onClick={e=>{ // Ctrl+click to open Wiki
         if (isWiki && e.ctrlKey && e.button===0 && valueState) {
-          const url = `https://wikipedia.org/wiki/${valueState.trim().replace(/ /g,'_')}`
+          const url = valueState.trim().replace(/ /g,'_') // `https://wikipedia.org/`
           window.open(url, '_blank')
         }
       }}
       style={css}
       className={'update-' + updateState[0]}
-      title={isWiki&&valueState?`Ctrl+click to visit Wikipedia page of ${valueState.trim()}`:valueState}
+      title={isWiki&&valueState?`Ctrl+클릭로 방문하실 수 있습니다.`:valueState}
       {...params}
     />
   </TD>

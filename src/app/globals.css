@@ -9,7 +9,6 @@
   --how-many-langs: 6;
   --c-lang: 16%;
   --c-wiki: 9%;
-  --c-memo: 18%;
    --c-del: 30pt;
 }
 .td:not(:nth-last-child(-n+3)) /* langs */
