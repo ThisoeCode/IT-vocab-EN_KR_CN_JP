@@ -7,15 +7,17 @@
   
   /* columns */
   --how-many-langs: 3;
-  --c-lang: 30%;
-  --c-wiki: 9%;
-  --c-memo: 18%;
+  --c-lang: 27%;
+  --c-nlink: 9%;
+  --c-eg: 36%;
    --c-del: 30pt;
 }
-.td:not(:nth-last-child(-n+2)) /* langs */
+.td:not(:nth-last-child(-n+3)) /* langs */
   {width:var(--c-lang)}
-.td:nth-last-child(2) /* Memo */
-  {width:var(--c-memo)}
+.td:nth-last-child(3) /* Example */
+  {width:var(--c-eg)}
+  .td:nth-last-child(2) /* Naver Dictionary Link */
+    {width:var(--c-nlink)}
 .td:nth-last-child(1) /* Rubbish */
   {width:var(--c-del)}
 

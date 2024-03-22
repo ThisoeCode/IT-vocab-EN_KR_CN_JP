@@ -37,7 +37,7 @@ export default function TR_inner({id,ctnt,post,tmpDelete,tmpUndelete,cssClass=''
           _value={ctnt[v]}
           _post={post}
           _rid={id}
-          isWiki={v==='네이버 사전'}
+          isWiki={v==='사전'}
         />)
   })
 
