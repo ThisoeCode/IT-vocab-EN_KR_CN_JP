@@ -1,15 +1,10 @@
 export const tableConfig = {
   /** Table Header Cells */
   th: [
-    'English',
-    '한국어',
-    '(한2)',
-    '中文',
-    '(中2)',
-    '日本語',
-    'Wiki',
-    // 'Category',
-    'Memo',
+    '단어',
+    '한자',
+    '뜻',
+    '네이버 사전',
     '🗑️' // '&#128465;'
   ],
 }
@@ -18,14 +13,10 @@ export const tableConfig = {
 export const convertConfig = {
   'id'  : null,
 //  db  : tableHeader (falsy to disable pass to frontend)
-  '_en' : 'English',
-  '_ko' : '한국어',
-  '_zh' : '中文',
-  '_ja' : '日本語',
- '_ko2' : '(한2)',
- '_zh2' : '(中2)',
- 'wiki' : 'Wiki',
-  'cat' : 'Category',
+  'word' : '단어',
+  'hanja' : '한자',
+  'mean' : '뜻',
+ 'link' : '네이버 사전',
  'memo' : 'Memo',
   'createdtime' : 'time',
 

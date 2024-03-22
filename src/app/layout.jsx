@@ -2,7 +2,7 @@ import "./globals.css"
 import H from "@/components/_h"
 
 export const metadata = {
-  title: "IT Vocab | Thisoe",
+  title: "Hanja Vocab | Thisoe",
   author: 'ThisoeCode',
   description: "Gathering web & software development & IT vocabulary and knowledge in 4 languages.",
 }

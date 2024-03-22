@@ -6,16 +6,14 @@
   --main-margin-bottom:9pt;
   
   /* columns */
-  --how-many-langs: 6;
-  --c-lang: 16%;
+  --how-many-langs: 3;
+  --c-lang: 30%;
   --c-wiki: 9%;
   --c-memo: 18%;
    --c-del: 30pt;
 }
-.td:not(:nth-last-child(-n+3)) /* langs */
+.td:not(:nth-last-child(-n+2)) /* langs */
   {width:var(--c-lang)}
-.td:nth-last-child(3) /* Wiki */
-  {width:var(--c-wiki)}
 .td:nth-last-child(2) /* Memo */
   {width:var(--c-memo)}
 .td:nth-last-child(1) /* Rubbish */
@@ -67,7 +65,7 @@ h1{
 /* MAIN */
 main{
   margin:calc(var(--main-margin-bottom) + var(--header-height)) auto var(--main-margin-bottom);
-  max-width:720pt;
+  max-width:390pt;
   padding:9pt;
   width:calc(100vw - 18pt - 8pt);
   min-height:calc(100vh - 18pt - var(--header-height) - var(--main-margin-bottom) * 2);

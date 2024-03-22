@@ -96,13 +96,13 @@ export default function Input({
       }}
       onClick={e=>{ // Ctrl+click to open Wiki
         if (isWiki && e.ctrlKey && e.button===0 && valueState) {
-          const url = `https://wikipedia.org/wiki/${valueState.trim().replace(/ /g,'_')}`
+          const url = 'https://zh.dict.naver.com/#/search?query='+valueState.trim().replace(/ /g,'_')
           window.open(url, '_blank')
         }
       }}
       style={css}
       className={'update-' + updateState[0]}
-      title={isWiki&&valueState?`Ctrl+click to visit Wikipedia page of ${valueState.trim()}`:valueState}
+      title={isWiki&&valueState?`Ctrl+click to visit ${valueState.trim()}`:valueState}
       {...params}
     />
   </TD>
