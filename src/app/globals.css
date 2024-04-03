@@ -1,0 +1,148 @@
+/* CONFIG */
+:root {
+  /* lengths */
+  --header-height:39pt;
+  --header-font-size:21pt;
+  --main-margin-bottom:9pt;
+  
+  /* columns */
+  --how-many-langs: 3;
+  --c-lang: 27%;
+  --c-nlink: 9%;
+  --c-eg: 36%;
+   --c-del: 30pt;
+}
+.td:not(:nth-last-child(-n+3)) /* langs */
+  {width:var(--c-lang)}
+.td:nth-last-child(3) /* Example */
+  {width:var(--c-eg)}
+  .td:nth-last-child(2) /* Naver Dictionary Link */
+    {width:var(--c-nlink)}
+.td:nth-last-child(1) /* Rubbish */
+  {width:var(--c-del)}
+
+
+/* RESET */
+body{
+  margin:0;
+  background:#333;
+}
+button,i,form,input{all:unset}
+i{display:block}
+
+
+/* select */
+*::selection{
+  background:#178577;
+  color:#fff;
+  text-shadow: 1px 1px #077;
+}
+/* scrollbar */
+::-webkit-scrollbar{width:8pt}
+::-webkit-scrollbar-track{background-color:#222}
+::-webkit-scrollbar-thumb{
+  background-color:#077;
+  border-radius:9pt;
+  transition:.2s background-color ease;
+}
+
+
+
+/* _H */
+header{
+  display:flex;
+  position:fixed;left:0;top:0;
+  width:100vw; height:calc(var(--header-height));
+  background:#123;
+  border-bottom:#013 outset 2pt;
+  user-select:none;
+}
+h1{
+  margin:auto;
+  line-height:1;
+  font-size:var(--header-font-size);
+  font-weight:bold; color:#ccc;
+}
+
+/* MAIN */
+main{
+  margin:calc(var(--main-margin-bottom) + var(--header-height)) auto var(--main-margin-bottom);
+  max-width:390pt;
+  padding:9pt;
+  width:calc(100vw - 18pt - 8pt);
+  min-height:calc(100vh - 18pt - var(--header-height) - var(--main-margin-bottom) * 2);
+}
+
+/* TABLE */
+#table{
+  width:100%;
+  display:flex; flex-direction:column;
+  outline:#999 solid 3pt;
+}
+
+.tr{
+  display:flex; flex-direction:row;
+  flex:1 0;
+}
+.tmp-delete{display:none}
+.tmp-undlt{display:flex}
+.tmp-undlt input{background-color:darkred}
+
+.td{
+  width:auto;
+  outline:#777 solid 1px;
+  text-align:center;
+  font-size:12pt; color:#ccc;
+  line-height:1.6;
+  text-wrap:nowrap; white-space:nowrap;
+  overflow:hidden;
+}
+
+input{width:100%;height:100%;}
+input[type=button]{cursor:pointer}
+input[type=button]:hover{background-color:#521}
+/* UPDATE (input) */
+.update-unchanged{background-color:transparent}
+.update-unsaved{background-color:#a0c3}
+.update-failed{background-color:#f309}
+.update-saved{animation: saved-ani .7s ease-out forwards;}
+@keyframes saved-ani {
+  from {background-color:#1977}
+  to {background-color:transparent}
+}
+
+/* TH */
+#th{ /* extends #tr */
+  font-weight:bold;
+  background-color:#111;
+  border-bottom:#777 solid thin;
+  position:sticky;top:calc(2pt + var(--header-height));
+}
+.th{
+  color:#eee;
+  font-size:11pt; line-height:2;
+  text-align:center;
+  border-bottom-width:8px;
+}
+
+/* 3-blocks */
+.new{background:#030 !important;}
+.new input:focus{
+  background-color:#151;
+  color:#eee;
+}
+
+#temp-rows{display:flex;flex-direction:column-reverse}
+#temp-rows .tr:nth-child(odd){background:#071939}
+#temp-rows .tr:nth-child(even){background:#025}
+#temp-rows input:focus{
+  background-color:#137;
+  color:#eef;
+}
+
+#mainlist .tr:nth-child(odd){background:#232323}
+#mainlist .tr:nth-child(even){background:#292929}
+#mainlist input:focus{
+  background-color:#b1d5;
+  color:#eee;
+}
