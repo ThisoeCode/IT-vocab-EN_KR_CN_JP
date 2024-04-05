@@ -4,12 +4,13 @@ import{API,headJ,convertToDb,convertPatch}from"@/_serv/lib"
 
 /** client putting func */
 export const put = async doc=>{
-  const body = JSON.stringify(convertToDb(doc))
   const res = await fetch(API,{
     cache:'no-store',
     method: 'PUT',
     headers:headJ,
-    body,
+    body: JSON.stringify(
+      convertToDb(doc)
+    ),
   })
 
   if(res.ok){
