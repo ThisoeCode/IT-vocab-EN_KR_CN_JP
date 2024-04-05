@@ -2,7 +2,7 @@ import{convertConfig}from"./_config"
 import{v4}from"uuid"
 
 /** API URL for `fetch()` */
-export const API = process.env.SELF_DOMAIN_URL+'/serv/'
+export const API = process.env.SELF_DOMAIN_URL+'api/serv/'
 /** HTTP JSON type */
 export const headJ = {'Content-Type':'application/json'}
 
