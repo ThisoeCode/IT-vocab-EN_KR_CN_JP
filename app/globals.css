@@ -11,8 +11,9 @@ body{
 }
 
 textarea{
+  resize:none;
   width:50vw;
-  height:50vh;
+  height:36vh;
   color:#fff;
   background:transparent;
   outline:#777 solid thin;
