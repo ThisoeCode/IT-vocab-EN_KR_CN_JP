@@ -6,7 +6,7 @@ import{API,headJ,convertToDb,convertPatch}from"@/_serv/lib"
 export const put = async doc=>{
   const res = await fetch(API,{
     cache:'no-store',
-    method: 'PUT',
+    method: 'POST', // 'PUT' -> 'POST'
     headers:headJ,
     body: JSON.stringify(
       convertToDb(doc)

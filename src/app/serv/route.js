@@ -33,10 +33,10 @@ export async function GET(req){t.t1(req)
 
 
 /** 2.
- * PUT: create new row
+ * PUT (changed to POST method): create new row
  * @param {NextRequest} req
  */
-export async function PUT(req){t.t1(req)
+export async function POST(req){t.t1(req)
   try{
     req = await req.json()
     try {
