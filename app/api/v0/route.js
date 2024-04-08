@@ -13,6 +13,5 @@ export async function PUT(req){
   console.log(`[Thisoe msg::PUT 201] Added new row: ObjectId[${res.insertedId}]`)
   return NextResponse.json(
     {status:"success",uuid:uuid.shorten(req.id)},
-    {status:201},
   )
 }
