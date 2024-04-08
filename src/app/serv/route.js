@@ -33,17 +33,16 @@ export async function GET(req){t.t1(req)
 
 
 /** 2.
- * PUT (changed to POST method): create new row
  * @param {NextRequest} req
  */
-export async function POST(req){t.t1(req)
+export async function PUT(req){t.t1(req)
   try{
     req = await req.json()
     try {
       const res = await(await collection)
         .insertOne(req)
-      console.log(`[${t.t2}PUT 201] Added new row: ObjectId[${res.insertedId}]`)
-      return NJ({rid:req.id},{status:201})
+      console.log(`[${t.t2}PUT 200] Added new row: ObjectId[${res.insertedId}]`)
+      return NJ({rid:req.id},{status:200})
     }catch(e){
       console.log(`[${t.t45}PUT 500] Fail to add row: ObjectId[${res.insertedId}]`)
       return NJ({rid:null},{status:500})
