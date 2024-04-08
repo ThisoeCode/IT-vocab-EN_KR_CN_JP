@@ -47,5 +47,19 @@ TypeError: fetch failed
 ```
 
 ### Test guide
+1. Pull this branch and [`orphan-hanja`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/tree/orphan-hanja) branch;
+2. Make sure to have an Atlas database Cluster, then fill out the `.env.FILLME` and rename it to `.env.local`;
+3. Run command `npm i`, `npm build`, `npm start`;
+4. Push and deploy on Vercel;
+5. Getting the error.
 
 - To check out the `PUT`ting result, build and run branch [`orphan-hanja`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/tree/orphan-hanja) (or visit [hanja.thisoe.dev](https://hanja.thisoe.dev/) using my Atlas database). There will be a line added at the top that says **TEST FROM \`vercel-put-test\`** with the UUID generated on each success fetch.
+
+
+### Exclusions
+
+- `PUT` method?
+> I also tried `POST` as replacement of `PUT` (see [commit `ea9916e`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/commit/ea9916ec18525618bb0518eefcdcd1d484f7caff)).
+
+- `201` status code?
+> I tried `200` or leaving out status option (see [commit `5a84503`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/commit/5a84503150139586abf5a4a1cd64c9bf16c82033)).
