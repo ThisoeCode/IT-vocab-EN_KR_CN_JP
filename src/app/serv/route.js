@@ -42,7 +42,7 @@ export async function PUT(req){t.t1(req)
       const res = await(await collection)
         .insertOne(req)
       console.log(`[${t.t2}PUT 200] Added new row: ObjectId[${res.insertedId}]`)
-      return NJ({rid:req.id},{status:200})
+      return NJ({rid:req.id})
     }catch(e){
       console.log(`[${t.t45}PUT 500] Fail to add row: ObjectId[${res.insertedId}]`)
       return NJ({rid:null},{status:500})
