@@ -58,6 +58,9 @@ TypeError: fetch failed
 
 ### Exclusions
 
+- API normal
+> Used postman to check the API (hanja.thisoe.dev/serv), `PUT`ting new row successfully.
+
 - `PUT` method?
 > I also tried `POST` as replacement of `PUT` (see [commit `ea9916e`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/commit/ea9916ec18525618bb0518eefcdcd1d484f7caff)).
 
