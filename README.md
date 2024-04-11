@@ -1,31 +1,33 @@
 > ### Overview
-> - This orphan branch is created just to test Next.js `fetch()` function with `POST` or `PUT` method on Vercel deployment.
+> - This orphan branch is created just to test the Next.js `fetch()` function with `POST` or `PUT` method on Vercel deployment.
 > - Getting "`RequestContentLengthMismatchError`" error logged at Vercel while hitting the `fetch()`.
-> - Still trying to find the root problem. Not figuring out yet.
+> - Still trying to find the root problem. Not figuring it out yet. [Help!!🥹](https://youtu.be/50Ura_ZcSvY)
 
 
 
 # About This Repo
-- This is a simple Excel-like Next.js app. You can add, modify and delete rows of data in a table.
-- Frontend is sending `GET`, `PUT`, `DELETE`, and `PATCH` to load existing data, add new row, delete a row, and modify a cell.
-- Backend is made of two `route.js` api model.
+- This is a simple Excel-like Next.js app. You can add and delete rows or modify cells. Columns are fixed and are defined in a config file before building.
+- The frontend is sending `GET`, `PUT`, `DELETE`, and `PATCH` to respectively load existing data, add a new row, delete a row, and modify a cell.
+- The backend is made of two `route.js` API models.
 
-> Current branch is an orphan branch that only used to run a `fetch()` to `PUT` (`POST`) a test data to the API.
+> The current branch is an orphan branch that is only used to run a `fetch()` to `PUT`/`POST` a row of test data to the API.
 
-# Problem Discription
+# Problem Description
 
 ### Works on localhost but not on Vercel
 I was working on branch [orphan-hanja](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/tree/orphan-hanja).
-After done building (`npm run build`) and testing on `localhost:3000`, I actually ran and used it on localhost for several days before deploying on Vercel. Everything worked perfectly fine.
+After done building (`npm run build`) and testing on `localhost:3000`, I ran and used it on localhost for several days. Everything worked perfectly fine.
 
-_**Then I deployed the branch with Vercel. `GET`, `DELETE`, and `PATCH` worked fine, but not for `PUT`.**_ I got `RequestContentLengthMismatchError` error with a code `UND_ERR_REQ_CONTENT_LENGTH_MISMATCH` in the [error log](#error-log-from-vercel).
+_**Then I deployed the branch with Vercel. `GET`, `DELETE`, and `PATCH` methods worked fine, but not for `PUT` and `POST`.**_ 
+_([deployed project](https://hanja.thisoe.dev/))_
+I got a `RequestContentLengthMismatchError` error with code `UND_ERR_REQ_CONTENT_LENGTH_MISMATCH` in the [error log](#error-log-from-vercel).
 
-I thought the problem might be the `PUT` method, so I changed the fetch and API from `PUT` to `POST` (see [commit `ea9916e`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/commit/ea9916ec18525618bb0518eefcdcd1d484f7caff)). The same exact error popped up: `RequestContentLengthMismatchError`.
+I thought the problem might be the `PUT` method, so I changed the fetch and API from `PUT` to `POST` (see [commit `ea9916e`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/commit/ea9916ec18525618bb0518eefcdcd1d484f7caff)). The same error popped up: `RequestContentLengthMismatchError`.
 
 Here is the full error message trace stack.
 
 ### Error-log from Vercel
-```markdown
+```yml
 TypeError: fetch failed
     at node:internal/deps/undici/undici:12345:11
     at async globalThis.fetch (/var/task/.next/server/chunks/638.js:1:36419)
@@ -59,10 +61,13 @@ TypeError: fetch failed
 ### Exclusions
 
 - API normal
-> Used postman to check the API (hanja.thisoe.dev/serv), `PUT`ting new row successfully.
+> Used [Postman](https://www.postman.com/) to check the API (https://hanja.thisoe.dev/serv), `PUT`ting new row successfully.
 
 - `PUT` method?
 > I also tried `POST` as replacement of `PUT` (see [commit `ea9916e`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/commit/ea9916ec18525618bb0518eefcdcd1d484f7caff)).
 
 - `201` status code?
 > I tried `200` or leaving out status option (see [commit `5a84503`](https://github.com/ThisoeCode/IT-vocab-EN_KR_CN_JP/commit/5a84503150139586abf5a4a1cd64c9bf16c82033)).
+
+### TODO
+- Check [this](https://janac.medium.com/nextjs-fails-with-und-err-req-content-length-mismatch-after-redirect-from-server-0acdc0bfb194) solution (using  `axios`). (From [Discord forum](https://discord.com/channels/752553802359505017/1175142401828995164))
