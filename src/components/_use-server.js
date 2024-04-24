@@ -1,17 +1,20 @@
 'use server'
 import{API,headJ,convertToDb,convertPatch}from"@/_serv/lib"
+import axios from "axios"
 
 
 /** client putting func */
 export const put = async doc=>{
-  const res = await fetch(API,{
-    cache:'no-store',
-    method:'PUT',
-    headers:headJ,
-    body: JSON.stringify(
-      convertToDb(doc)
-    ),
-  })
+  try{
+    const res = await axios.put(API,
+      convertToDb(doc), {
+        headers: headJ,
+        cache: 'no-store',
+      })
+  }catch(err){
+    console.error("[Thisoe] Error: AXIOSNOTPUTTING "+err)
+    return null
+  }
 
   if(res.ok){
     return (await res.json()).rid
