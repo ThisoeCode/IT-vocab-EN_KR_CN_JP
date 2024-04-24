@@ -12,7 +12,7 @@ export const put = async doc=>{
         cache: 'no-store',
       })
       if(res.status >= 200 && res.status < 300){
-        return (await res.json()).rid
+        return res.data.rid
       }
       return null
   }catch(err){
