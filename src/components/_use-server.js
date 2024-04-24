@@ -11,15 +11,14 @@ export const put = async doc=>{
         headers: headJ,
         cache: 'no-store',
       })
+      if(res.status >= 200 && res.status < 300){
+        return (await res.json()).rid
+      }
+      return null
   }catch(err){
     console.error("[Thisoe] Error: AXIOSNOTPUTTING "+err)
     return null
   }
-
-  if(res.ok){
-    return (await res.json()).rid
-  }
-  return null
 }
 
 
