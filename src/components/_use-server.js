@@ -53,3 +53,18 @@ export const up = async (id,column,data)=>{
   if(res.ok){return 1}
   return 0
 }
+
+
+/** client backuping func */
+export const bu = async _=>{
+  try{
+    const res = await fetch(process.env.SELF_DOMAIN_URL+'/api/backuping',{
+      cache:'no-store',
+      method: 'PUT',
+      body: JSON.stringify({}),
+    })
+    return res.ok?1:0
+  }catch{
+    return null
+  }
+}

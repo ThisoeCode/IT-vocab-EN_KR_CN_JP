@@ -64,18 +64,20 @@ export const hidToRid = hid=>{
 import{NextRequest,NextResponse}from"next/server"
 
 /** NextResponse.json */
-export const NJ =_=>{ return NextResponse.json(_) }
+export const NJ =(_,stat={status:200})=>{
+  return NextResponse.json(_,stat)
+}
 
 /** @param {NextRequest} req */
 const t1 = req=>{
-  let ip = req.headers.get('x-forwarded-for')
-  if(['::1',null,'127.0.0.1'].includes(ip)){
-    ip='localhost'
+  let ip = req.headers.get('x-forwarded-for')?.split(',')[0]
+  if (['::1', null, '127.0.0.1'].includes(ip)){
+    ip = 'localhost'
   }else{
-    ip=ip?ip.trim():'0.0.0.0'
+    ip = ip?ip.trim():'0.0.0.0'
   }
   let geo = req.headers.get('x-real-ip')
-  geo=geo?geo.trim():'--'
+  geo = geo?geo.trim():'--'
   console.log(`\n[Thisoe API_LAUNCH 100] FromIP: ${ip} [${geo}]`)
   return void 1
 }
